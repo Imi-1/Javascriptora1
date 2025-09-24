@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lekeredez(){
+            setTimeout(() => {
+                const autokID = [1, 2, 59, 4, 5];
+                console.log(autokID);
+
+                setTimeout(autokID=> {
+                    const auto ={
+                        id:59,
+                        marka:"Opel",
+                        tipus:"Astra",
+                        rendszam:"ABC-123",
+                        evjarat:2005,
+                        uzemanyag:"benzin"
+                    };
+                    console.log(auto);
+
+                    setTimeout((tipus) => {
+                        const auto =[{
+                        id:59,
+                        marka:"Opel",
+                        tipus:"Astra",
+                        rendszam:"ABC-123",
+                        evjarat:2005,
+                        uzemanyag:"benzin"
+                    },
+                    {
+                        id:1,
+                        marka:"Opel",
+                        tipus:"Astra",
+                        rendszam:"ABC-123",
+                        evjarat:2005,
+                        uzemanyag:"benzin"
+                    },
+                    {
+                        id:59,
+                        marka:"Opel",
+                        tipus:"Astra",
+                        rendszam:"ABC-321",
+                        evjarat:2012,
+                        uzemanyag:"benzin"
+                    },];
+                        console.log(auto);
+
+                        setTimeout((autpID) => {
+                            const auto ={
+                                id:4,
+                                marka:"Opel",
+                                tipus:"Astra",
+                                rendszam:"ABC-123",
+                                evjarat:2010,
+                                uzemanyag:"benzin"
+                            };
+                            console.log(auto);
+                        }, 1500);
+                       
+                    }, 2000);
+                },1800)
+            }, 1500);
+        }
+
+        lekeredez();
+    </script>
+    
+</body>
+</html>
