@@ -20,7 +20,7 @@ class Jarmu {
     }
 
     static get jarmuvekSzama() {
-        return Jarmu.jarmuvekSzama;
+        return (Jarmu.jarmuvekSzama);
     }
 
     ido(tavolsag) {
