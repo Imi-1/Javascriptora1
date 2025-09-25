@@ -6,9 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
     <script>
-        const lekeredez=new Promise((resolve, reject) => {
+          const lekeredez=new Promise((resolve, reject) => {
             setTimeout(() => {
                 const autokID = [1, 2, 59, 4, 5];
                 if(Math.random() > 0.5){
@@ -88,6 +87,13 @@
         .finally( () => {
             console.log("A lekérdezés lefutott");
         });
+
+
+        async function lekerdezesek(){
+            const autok =await autolekerdez();
+            console.log(autok);
+        }
+        lekerdezesek();
     </script>
 </body>
 </html>
