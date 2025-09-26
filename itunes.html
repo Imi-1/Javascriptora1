@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iTunes zenekereso app</title>
+    <style>
+        #zenek tr:nth-child(even){
+            background-color: lightgray;
+        }
+        .cim{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .cim:hover{
+            color: blue;
+            font-weight: 600;
+            background-color: rgb(148, 148, 148);
+        }
+    </style>
 </head>
 <body>
     <h1>iTunes zene kerső alkalmazás</h1>
@@ -16,6 +30,9 @@
         <button id="searchBtn">Keresés</button>
     </div>
 
+    <div id="zene-lejatszo">
+    </div>
+
     <table>
          <thead>
             <tr>
@@ -23,6 +40,7 @@
                 <th>Zene címe</th>
                 <th>Kiadás éve</th>
                 <th>Zene típusa</th>
+                <th>Zene hossza</th>
             </tr>
          </thead>
          <tbody id="zenek"></tbody>
