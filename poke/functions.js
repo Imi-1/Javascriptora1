@@ -1,50 +1,59 @@
-function newTableRow(atck,def,speed,hp,type) {
-    let tr = document.createElement("tr");
-    let tdAtck = document.createElement("td");
-    let tdDef = document.createElement("td");
-    let tdSpeed = document.createElement("td");
-    let tdHp = document.createElement("td");
-    let tdType = document.createElement("td");
-
-    tdAtck.innerHTML = atck;
-    tdDef.innerHTML = def;
-    tdSpeed.innerHTML = speed;
-    tdHp.innerHTML = hp;
-    tdType.innerHTML = type;
-
-    document.getElementById("pokeData").appendChild(tr);
-    tr.appendChild(tdAtck);
-    tr.appendChild(tdDef);
-    tr.appendChild(tdSpeed);
-    tr.appendChild(tdHp);
-    tr.appendChild(tdType);
+function getMaxId(){
+    return fetch("https://pokeapi.co/api/v2/pokemon?limit=1")
+    .then(response => response.json())
+    .then(data=> maxId=data.count)
+    .catch(err => console.error("Error fetching max ID:", err));
 }
 
-newTableRow(45,49,45,44,"grass");
-
-function generatePokemon(){
-    const url = "https://pokeapi.co/api/v2/nature/{id or name}"
+function generateRandomPoke(){
+    const id = Math.floor(Math.random()*maxId+1)
+    console.log(id)
+    createPokemon(id)
 }
 
-// https://pokeapi.co/api/v2/nature/{id or name}
-// function kereses(){    
-//     //alert("Működik!")
-//     let keresett = $("searchInput").value;
-//     keresett = keresett.trim();
-//     console.log(keresett);
-//     keresett = keresett.replaceAll(" ", "+");
+function  createPokemon(pokemon){
+    const url = "https://pokeapi.co/api/v2/pokemon/"+pokemon.toString().toLowerCase().trim()+"/"
+    fetch(url)
+        .then(response => {
+            if (!response.ok) throw new Error("Pokémon not found");
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("pokeName").textContent = data.name.toUpperCase();
+            document.getElementById("pokeImage").src = data.sprites.front_default;
+            document.getElementById("pokeType").textContent = "Type: " + data.types.map(t => t.type.name).join(", ");
+ 
+            document.getElementById("hp").textContent = data.stats.find(s => s.stat.name === "hp").base_stat;
+            document.getElementById("attack").textContent = data.stats.find(s => s.stat.name === "attack").base_stat;
+            document.getElementById("defense").textContent = data.stats.find(s => s.stat.name === "defense").base_stat;
+            document.getElementById("speed").textContent = data.stats.find(s => s.stat.name === "speed").base_stat;
+ 
+            document.getElementById("searchInput").value = "";
+        })
+        .catch(err => {
+            console.error("Error fetching Pokémon:", err);
+            alert("Pokémon not found. Check the name!");
+        });
 
-//     const url = `https://itunes.apple.com/search?term=${keresett}&limit=200&media=music`;
 
-//     fetch(url)
-//     .then( response =>  response.json())
-//     .then( (data) => {
-//         // console.log(data);
-//         const results = data.results;
+}
 
-//         console.log(results)
-//         $("zenek").innerHTML = "";
-//         for(let i=0; i<results.length; i++){
-//             newTableRow(results[i].artistName, results[i].trackName, results[i].releaseDate.substring(0,4), results[i].primaryGenreName, results[i].trackTimeMillis, results[i].previewUrl);
-//         }
-//     })
+
+
+getMaxId().then(generateRandomPoke)
+
+
+document.getElementById("refresh").addEventListener("click", (generateRandomPoke))
+
+document.getElementById("searchBtn").addEventListener("click",() =>{
+    const pokemon = document.getElementById("searchInput").value
+    if (pokemon)createPokemon(pokemon)
+})
+
+document.getElementById("searchBtn").addEventListener("keypress",e =>{
+    if(e.key==="Enter"){
+        const pokemon = document.getElementById("searchInput").value
+        if (pokemon)createPokemon(pokemon)
+    }
+
+})

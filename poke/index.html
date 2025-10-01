@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon</title>
     <style>
-        #pockecard{ background-color: rgb(138, 138, 138);}
+          body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: #f2f2f2; }
+            #pokecard { background-color: #eee; border-radius: 10px; padding: 20px; text-align: center; width: 250px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 20px; }
+            #pokecard img { width: 150px; height: 150px; }
+            .stats { display: flex; justify-content: space-between; margin-top: 10px; }
+            .stat { flex: 1; margin: 0 5px; background-color: #ddd; border-radius: 5px; padding: 5px; }
+            input, button { padding: 10px; font-size: 16px; margin: 5px; border-radius: 5px; }
+            #searchContainer { margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div id="pokecard">
-        <table>
-            <thead>
-                <tr>
-                    <th>Attack</th>
-                    <th>Defense</th>
-                    <th>Speed</th>
-                    <th>HP</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody id="pokeData">
-            </tbody>
-        </table>
+
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Enter Pokémon name">
+        <button id="searchBtn">Search</button>
     </div>
-    <button id="refresh">Generate new</button>
+
+    <div id="pokecard">
+        <h2 id="pokeName">Pokémon</h2>
+        <img id="pokeImage" src="" alt="Pokemon Image">
+        <p id="pokeType">Type: -</p>
+        <div class="stats">
+        <div class="stat">HP: <span id="hp">-</span></div>
+        <div class="stat">Attack: <span id="attack">-</span></div>
+        <div class="stat">Defense: <span id="defense">-</span></div>
+        <div class="stat">Speed: <span id="speed">-</span></div>
+        </div>
+        </div>
+         
+        <button id="refresh">Generate Random Pokémon</button>
 
     <script src="functions.js"></script>
 </body>
