@@ -50,10 +50,9 @@ document.getElementById("searchBtn").addEventListener("click",() =>{
     if (pokemon)createPokemon(pokemon)
 })
 
-document.getElementById("searchBtn").addEventListener("keypress",e =>{
+document.getElementById("searchInput").addEventListener("keypress",e =>{
     if(e.key==="Enter"){
         const pokemon = document.getElementById("searchInput").value
         if (pokemon)createPokemon(pokemon)
     }
-
 })
