@@ -4,10 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
+    <style>
+        body{
+            background-color: cadetblue;
+            text-align: center;
+        }
+
+        div{
+            margin: auto;
+            border-radius: 10%;
+        }
+
+        #Weather{
+            background-color: aliceblue;
+            padding: 20px;
+            width: 300px;
+        }
+        #name {
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #err{
+            background-color: red;
+            font-weight: bold;
+            width: 400px;
+        }
+
+        #search{
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <input type="text" id="searchField" placeholder="Enter a city">
-    <button type="button" id="searchBtn">Search</button>
+
+    <div id="search">
+        <input type="text" id="searchField" placeholder="Enter a city">
+        <button type="button" id="searchBtn">Search</button>
+    </div>
+
+
+    <div id="Weather">
+        <div id="name"></div>
+        <div id="currentweather"></div>
+        <div id="temp"></div>
+        <div id="humidity"></div>
+        <div id="pressure"></div>
+        <div id="wind"></div>
+    </div>
+    <div id="err"></div>
 
     <script src="functions.js"></script>
 </body>
